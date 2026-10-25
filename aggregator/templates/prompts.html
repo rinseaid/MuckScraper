@@ -61,6 +61,7 @@
         .empty { padding: 48px; text-align: center; color: var(--text-faint); font-style: italic; }
     </style>
     <script src="{{ url_for('static', filename='js/theme_toggle.js') }}"></script>
+    {% include '_reader_theme_head.html' %}
 </head>
 <body>
 {% from 'breadcrumb.html' import back_link %}

@@ -50,6 +50,9 @@ def create_app():
     from aggregator.permissions import public_read_access_from_env
     app.config["PUBLIC_READ_ACCESS"] = public_read_access_from_env()
 
+    from aggregator.reader_themes import init_app as init_reader_themes
+    init_reader_themes(app, os.environ)
+
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)

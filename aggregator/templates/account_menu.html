@@ -20,11 +20,45 @@
             <a role="menuitem" href="{{ url_for('admin.users_page', back=menu_back()) }}">{{ icon('users') }} Users</a>
             <a role="menuitem" href="{{ url_for('admin.tools_page', back=menu_back()) }}">{{ icon('wrench') }} Admin Tools</a>
             {%- endif %}
+            {% if reader_themes is defined %}
+            <button type="button" data-reader-preferences-open role="menuitem">Appearance</button>
+            {% endif %}
             <form method="POST" action="{{ url_for('auth.logout') }}">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button type="submit" role="menuitem">{{ icon('log-out') }} Sign out</button>
             </form>
         </div>
+        {% if reader_themes is defined %}
+        <dialog class="reader-preferences" aria-label="Reading appearance">
+            <div class="reader-preferences-heading">
+                <h2 tabindex="-1" autofocus>Appearance</h2>
+                <button type="button" data-reader-preferences-close aria-label="Close appearance">×</button>
+            </div>
+            <div class="reader-preferences-section">
+                <h3>Theme</h3>
+                <div class="reader-theme-options" role="group" aria-label="Reader theme">
+                    <button type="button" data-reader-theme-choice="default" aria-pressed="true">Device default</button>
+                    {% for id, theme in reader_themes.themes.items() %}
+                    <button type="button" data-reader-theme-choice="{{ id }}" aria-pressed="false">{{ theme.label }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% if reader_themes.fonts is defined %}
+            <div class="reader-preferences-section">
+                <div class="reader-font-heading"><h3>Typeface</h3><button type="button" data-reader-font-choice="default" aria-pressed="true">Theme default</button></div>
+                <div class="reader-font-options" role="group" aria-label="Interface font">
+                    {% for id, font in reader_themes.fonts.items() %}
+                    <button type="button" data-reader-font-choice="{{ id }}" aria-pressed="false" aria-label="{{ font.label }}">
+                        <span class="reader-font-name">{{ font.label }}</span>
+                        <span class="reader-font-sample" style="--preview-font: {{ font.family }};" aria-hidden="true">Aa 0123</span>
+                    </button>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="reader-preferences-footer"><span>Applies across this browser.</span><button type="button" data-reader-preferences-close>Done</button></div>
+        </dialog>
+        {% endif %}
     </div>
     <script src="{{ url_for('static', filename='js/account_menu.js') }}" defer></script>
 {%- else %}
