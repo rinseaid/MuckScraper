@@ -3,4 +3,5 @@
     <link id="reader-theme-stylesheet" rel="stylesheet" {% if reader_themes.themes[reader_themes.desktop].url %}href="{{ reader_themes.themes[reader_themes.desktop].url }}"{% endif %}>
     <script src="{{ url_for('static', filename='js/reader_theme.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reader_preferences.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reader_controls.css') }}">
 {% endif %}

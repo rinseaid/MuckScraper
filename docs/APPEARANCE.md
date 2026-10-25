@@ -26,3 +26,11 @@ and work in both appearances, with visible keyboard focus and narrow viewports.
 
 The feature changes presentation only. It does not change selection, grouping,
 provider configuration, access control, feeds, or inference usage.
+
+## Optional supplied styles
+
+Reader and Editorial are selectable CSS overlays. Classic remains the default
+on desktop and mobile. To try one, choose it in Appearance or explicitly set
+`READER_THEME_DESKTOP=reader`. These styles retain the existing search table,
+source counts, service status, diagnostics, routes, and actions. They change no
+ranking or inference behavior. Font selection applies to the whole interface.

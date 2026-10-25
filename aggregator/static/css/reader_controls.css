@@ -1,0 +1,58 @@
+/* Shared control and coverage polish for the optional built-in themes.
+   Native select behavior and original application actions remain intact. */
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0; min-width: 44px; min-height: 44px; padding: 12px; border: 0; border-radius: 8px; background: transparent; color: var(--text-muted); box-shadow: none; font-size: 0; font-weight: 600; line-height: 1; cursor: pointer; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn:hover { background: var(--btn-muted-bg); color: var(--accent-text); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters { display: flex; gap: 12px; padding: 16px 0 20px; margin: 0 0 22px; border-bottom: 1px solid var(--border); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters label { flex: 0 1 240px; min-width: 0; gap: 7px; font-size: 11px; letter-spacing: .7px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) select { appearance: none; -webkit-appearance: none; min-height: 44px; padding: 11px 40px 11px 14px; border: 1px solid var(--input-border); border-radius: 10px; background-color: var(--surface); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23758194' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m8 10 4 4 4-4'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px; color: var(--text); font-size: 14px; font-weight: 500; line-height: 1.4; box-shadow: 0 1px 2px rgb(20 30 50 / 3%); cursor: pointer; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters select { width: 100%; min-width: 0; padding: 11px 40px 11px 14px; border-radius: 10px; border-color: var(--input-border); background-color: var(--surface); font-size: 14px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) select:hover { border-color: var(--accent-text); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) select:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-btn, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn-view { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 42px; padding: 10px 16px; border-radius: 9px; font-size: 13px; font-weight: 600; line-height: 1.4; text-decoration: none; box-shadow: none; transition: background-color .15s, border-color .15s; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn:hover, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-btn:hover, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn-view:hover { transform: none; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn:focus-visible, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-btn:focus-visible, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn-view:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn-dark { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn-muted, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-btn { background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .btn-muted:hover, html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-btn:hover { background: var(--btn-muted-bg); border-color: var(--input-border); color: var(--accent-text); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .edition-links { gap: 8px; padding-top: 0; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .edition-links .btn { min-height: 38px; padding: 8px 12px; font-size: 12px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-actions { gap: 10px; padding-top: 14px; margin-top: 6px; border-top: 1px solid var(--border); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-actions .btn { min-height: 42px; padding: 10px 15px; border-radius: 9px; font-size: 13px; font-weight: 600; white-space: normal; text-align: left; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-actions .btn-dark { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-actions .btn-dark:hover { background: var(--accent-dark); color: #fff; text-decoration: none; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-actions .btn-muted { background: var(--btn-muted-bg); color: var(--text-muted); border: 1px solid transparent; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-balance { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; width: 100%; max-width: 480px; margin: 2px 0 18px; padding: 0; border: 0; background: transparent; border-radius: 0; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-balance::before { content: 'Coverage by outlet'; grid-column: 1 / -1; margin-bottom: 3px; color: var(--text-muted); font-size: 11px; font-weight: 600; letter-spacing: .2px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col { --coverage-color: #2765b5; --coverage-tint: #edf4ff; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; min-width: 0; padding: 10px 14px; border: 0; border-top: 3px solid var(--coverage-color); border-radius: 3px 3px 8px 8px; background: var(--coverage-tint); text-align: left; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col + .bias-col { border-left: 0; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col.center { --coverage-color: #626a7c; --coverage-tint: #f0f2f6; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col.right { --coverage-color: #b84450; --coverage-tint: #fff0f1; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col .bias-col-label { margin: 0; padding: 0; border: 0; font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--coverage-color); }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col-count { color: var(--text); font-size: 24px; font-weight: 750; font-variant-numeric: tabular-nums; line-height: 1.15; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .article-actions a.btn-view { min-height: 42px; padding: 10px 15px; border: 1px solid var(--accent); border-radius: 9px; background: var(--accent); color: #fff; font-size: 13px; font-weight: 600; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .article-actions button.btn-view { min-height: 42px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); color: var(--accent-text); font-size: 13px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .article-actions { gap: 8px 12px; align-items: center; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .article-original { color: var(--text-muted); font-size: 13px; text-decoration: none; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .article-original:hover { color: var(--accent-text); text-decoration: underline; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .pager { gap: 8px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-jump input { min-height: 42px; border-radius: 9px; background: var(--surface); }
+
+html[data-theme="dark"]:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col.left { --coverage-color: #8db9ff; --coverage-tint: #1e304a; }
+html[data-theme="dark"]:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col.center { --coverage-color: #bbc4d5; --coverage-tint: #2a3240; }
+html[data-theme="dark"]:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col.right { --coverage-color: #ffa0a9; --coverage-tint: #40262f; }
+@media (max-width: 768px), (max-height: 500px) {
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn { border: 0; background: transparent; padding: 10px 8px; border-radius: 8px; }
+}
+@media (max-width: 600px) {
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters .clear { grid-column: 1 / -1; padding-left: 0; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .bias-col { padding: 10px 12px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-actions .btn { min-height: 44px; }
+}
+@media (max-width: 768px) {
+    html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters select { font-size: 16px; }
+}
+@media (max-width: 900px) {
+    html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .story-image { width: 100%; min-width: 0; margin: 0; height: 180px; }
+}

@@ -20,6 +20,8 @@ FONT_CHOICES = {
 def theme_settings(environ):
     themes = {
         "classic": {"label": "Classic", "stylesheet": ""},
+        "reader": {"label": "Reader", "stylesheet": "css/reader.css"},
+        "editorial": {"label": "Editorial", "stylesheet": "css/editorial.css"},
     }
     custom = json.loads(environ.get("READER_THEMES") or "{}")
     if not isinstance(custom, dict):
