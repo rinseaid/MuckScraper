@@ -34,12 +34,17 @@
     }
     var selected = 'default';
     try { selected = preference(localStorage.getItem(key)); } catch (_) {}
+    var failedTheme = null;
     function apply() {
         var name = selected === 'default' ? config[mobile.matches ? 'mobile' : 'desktop'] : selected;
         var url = config.themes[name].url;
-        if (url) stylesheet.setAttribute('href', url);
+        if (url && failedTheme !== name) stylesheet.setAttribute('href', url);
         else stylesheet.removeAttribute('href');
-        document.documentElement.setAttribute('data-reader-theme', name);
+        document.documentElement.setAttribute('data-reader-theme', failedTheme === name ? 'classic' : name);
+        document.querySelectorAll('[data-reader-theme-status]').forEach(function (status) {
+            status.hidden = failedTheme !== name;
+            status.textContent = failedTheme === name ? 'This theme could not load. Showing the original appearance. Choose another theme or reload to retry.' : '';
+        });
         document.querySelectorAll('[data-reader-theme-choice]').forEach(function (control) {
             control.setAttribute('aria-pressed', String(control.dataset.readerThemeChoice === selected));
         });
@@ -47,6 +52,13 @@
             control.value = selected;
         });
     }
+    stylesheet.addEventListener('error', function () {
+        failedTheme = document.documentElement.getAttribute('data-reader-theme');
+        apply();
+        stylesheet.removeAttribute('href');
+        document.documentElement.setAttribute('data-reader-theme', 'classic');
+    });
+    stylesheet.addEventListener('load', function () { failedTheme = null; });
     apply();
     applyFont();
     document.addEventListener('DOMContentLoaded', function () {
