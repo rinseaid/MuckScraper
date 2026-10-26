@@ -12,18 +12,24 @@ html[data-reader-font] body, html[data-reader-font] body * {
 .reader-preferences-section + .reader-preferences-section { margin-top: 24px; }
 .reader-preferences h3 { margin: 0 0 10px; font-size: 13px; color: var(--text-muted); font-weight: 500; }
 .reader-theme-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
-.reader-theme-options button { flex: 1 1 80px; min-height: 36px; padding: 6px 8px; border: 0; background: transparent; border-radius: 5px; color: var(--text-muted); cursor: pointer; font-size: 12px; }
+.reader-theme-options button { flex: 1 1 80px; min-height: 44px; padding: 6px 8px; border: 0; background: transparent; border-radius: 5px; color: var(--text-muted); cursor: pointer; font-size: 12px; }
 .reader-preferences button[aria-pressed="true"] { background: var(--btn-muted-bg); color: var(--accent-text); box-shadow: inset 0 0 0 1px var(--accent-text); }
 .reader-font-heading { margin-bottom: 10px; }
 .reader-font-heading h3 { margin: 0; }
-.reader-font-heading button { border: 0; border-radius: 4px; background: transparent; color: var(--text-muted); padding: 5px 8px; font-size: 12px; cursor: pointer; }
+.reader-font-heading button { border: 0; border-radius: 4px; background: transparent; color: var(--text-muted); padding: 5px 8px; min-height: 44px; font-size: 12px; cursor: pointer; }
 .reader-font-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .reader-font-options button { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; min-height: 76px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); text-align: left; cursor: pointer; }
 .reader-font-name { font-size: 12px; line-height: 1.3; }
-html body .reader-preferences .reader-font-sample { font-family: var(--preview-font) !important; font-size: 21px; font-weight: 400; line-height: 1.2; white-space: nowrap; }
+html body .reader-preferences .reader-font-sample { font-family: var(--preview-font) !important; font-size: 21px; font-weight: 400; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; }
 .reader-preferences-footer { border-top: 1px solid var(--border); padding-top: 18px; margin-top: 24px; }
 .reader-preferences-footer span { font-size: 12px; color: var(--text-muted); }
-.reader-preferences-footer button { border: 0; border-radius: 7px; background: var(--accent); color: #fff; padding: 9px 18px; min-height: 40px; font-size: 13px; cursor: pointer; }
+.reader-preferences-footer button { border: 0; border-radius: 7px; background: var(--accent); color: #fff; padding: 9px 18px; min-height: 44px; font-size: 13px; cursor: pointer; }
 .reader-preferences button:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
 @media (max-width: 600px) { .reader-theme-options { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 380px) { .reader-preferences { padding: 20px; } }
+
+.reader-preferences, .reader-preferences * { box-sizing: border-box; }
+.reader-preferences-heading h2, .reader-font-heading h3 { min-width: 0; overflow-wrap: anywhere; }
+.reader-preferences-heading button { flex-shrink: 0; }
+.reader-theme-options button, .reader-font-name { overflow-wrap: anywhere; min-width: 0; }
+.reader-theme-status { font-size: 13px; color: var(--text-muted); }

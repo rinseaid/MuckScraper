@@ -23,6 +23,9 @@ An omitted mobile default follows the desktop default. Unknown defaults refuse
 startup; a removed browser choice falls back to the device default. The existing
 Light/Dark control remains independent. Custom styles should use theme.css tokens
 and work in both appearances, with visible keyboard focus and narrow viewports.
+A failed stylesheet falls back to the original appearance and displays a message
+in Appearance. Reload to retry the selected stylesheet. Custom CSS is trusted
+operator code and can import resources; only install stylesheets you trust.
 
 The feature changes presentation only. It does not change selection, grouping,
 provider configuration, access control, feeds, or inference usage.
