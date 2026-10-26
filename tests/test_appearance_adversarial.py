@@ -61,13 +61,17 @@ def test_hostile_preferences_keyboard_and_load_failures(engine):
         browser = getattr(playwright, engine).launch()
         context = browser.new_context(viewport={'width': 320, 'height': 568})
         requests, errors = [], []
+        failure_mode = [404]
         def route(route):
             request = route.request
             requests.append((request.method, request.url))
             path = urlsplit(request.url).path
             if path == '/': route.fulfill(body=html, content_type='text/html')
             elif path == '/static/css/paper.css': route.fulfill(body='body {--fixture: paper}', content_type='text/css')
-            elif path == '/static/css/broken.css': route.fulfill(status=404, body='missing')
+            elif path == '/static/css/broken.css':
+                if failure_mode[0] == 'network': route.abort('failed')
+                elif failure_mode[0] == 'mime': route.fulfill(body='<html>not CSS</html>', content_type='text/html', headers={'X-Content-Type-Options': 'nosniff'})
+                else: route.fulfill(status=failure_mode[0], body='unavailable')
             else:
                 asset = ROOT / 'aggregator' / path.lstrip('/')
                 assert asset.is_file(), request.url
@@ -105,12 +109,20 @@ def test_hostile_preferences_keyboard_and_load_failures(engine):
             if not page.locator('dialog').evaluate('(e) => e.open'):
                 page.locator('.account-button').click()
                 page.locator('[data-reader-preferences-open]').click()
-        page.locator('[data-reader-theme-choice=broken]').click()
-        page.wait_for_function("document.documentElement.dataset.readerTheme === 'classic'")
-        assert page.locator('[data-reader-theme-status]').is_visible()
-        page.locator('[data-reader-theme-choice=paper]').click()
-        page.wait_for_function("document.documentElement.dataset.readerTheme === 'paper'")
-        assert not page.locator('[data-reader-theme-status]').is_visible()
+        for mode in [404, 500, 'mime', 'network']:
+            failure_mode[0] = mode
+            page.locator('[data-reader-theme-choice=broken]').click()
+            page.wait_for_function("document.documentElement.dataset.readerTheme === 'classic'")
+            assert page.locator('[data-reader-theme-status]').is_visible()
+            page.locator('[data-reader-theme-choice=paper]').click()
+            page.wait_for_function("document.documentElement.dataset.readerTheme === 'paper'")
+            assert not page.locator('[data-reader-theme-status]').is_visible()
+        page.evaluate("""() => {
+            for (let i = 0; i < 200; i++) {
+                document.querySelector('[data-reader-theme-choice=' + (i % 2 ? 'paper' : 'classic') + ']').click();
+            }
+        }""")
+        page.wait_for_function("getComputedStyle(document.body).getPropertyValue('--fixture').trim() === 'paper'")
         # Two tabs, preference changes and clearing storage stay synchronized.
         second = context.new_page()
         second.goto('https://appearance.example/')
