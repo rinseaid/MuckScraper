@@ -66,3 +66,7 @@ html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-
 html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar { background: var(--sidebar-bg); }
 html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .editors-note { padding: 16px; margin-bottom: 24px; border-radius: 8px; }
 html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .editors-note-text { font-size: 13px; line-height: 1.6; }
+/* The navigation contribution supplies a normal-flow slot of its own. */
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-body > :is(.topbar, .main-header):has(> .sidebar-toggle-btn) { padding-left: 16px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) #theme-toggle { color: var(--text-muted) !important; border-color: var(--input-border) !important; min-height: 44px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .account-button { width: 44px; height: 44px; }
