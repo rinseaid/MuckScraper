@@ -1,6 +1,6 @@
 /* Shared control and coverage polish for the optional built-in themes.
    Native select behavior and original application actions remain intact. */
-html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0; min-width: 44px; min-height: 44px; padding: 12px; border: 0; border-radius: 8px; background: transparent; color: var(--text-muted); box-shadow: none; font-size: 0; font-weight: 600; line-height: 1; cursor: pointer; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0; min-width: 44px; min-height: 44px; padding: 12px; border: 0; border-radius: 8px; background: transparent; color: var(--text-muted); box-shadow: none; font-size: 18px; font-weight: 600; line-height: 1; cursor: pointer; }
 html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn:hover { background: var(--btn-muted-bg); color: var(--accent-text); }
 html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .sidebar-toggle-btn:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 3px; }
 html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .feed-filters { display: flex; gap: 12px; padding: 16px 0 20px; margin: 0 0 22px; border-bottom: 1px solid var(--border); }
@@ -55,4 +55,16 @@ html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .card-act
 }
 @media (max-width: 900px) {
     html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .story-image { width: 100%; min-width: 0; margin: 0; height: 180px; }
+}
+
+/* Keep the original fixed menu control clear of the brand on standalone installs. */
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-body > .topbar,
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .page-body > .main-header { padding-left: 64px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .crumb-bar { flex-wrap: wrap; gap: 8px 16px; min-width: 0; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail h1 { overflow-wrap: anywhere; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .reader-detail .story-card > div[style*="display: flex"] { flex-wrap: wrap; }
+@media (max-width: 600px) {
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .search-bar { flex-wrap: wrap; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .search-bar input { min-width: 0; flex: 1 1 180px; }
+html:is([data-reader-theme="reader"], [data-reader-theme="editorial"]) .search-actions { flex-wrap: wrap; }
 }
