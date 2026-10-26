@@ -21,31 +21,18 @@ body { -webkit-font-smoothing: antialiased; }
 .topic-block.active { border: 0; box-shadow: inset 0 0 0 1px #64639a; }
 .topic-block a { padding: 10px 12px; font-size: 14px; }
 .sidebar-divider, .sidebar-footer { border-color: #354255; }
-.sidebar-footer .appearance-switch { background: #1b283a; border-color: #42506a; }
-.sidebar-footer .appearance-switch button { color: #c5d0df; }
-.sidebar-footer .appearance-switch button[aria-pressed="true"] { background: #393e78; color: #fff; box-shadow: inset 0 0 0 1px #64639a; }
 .page-body > .topbar, .page-body > .main-header { background: var(--topbar-bg); border-bottom: 1px solid var(--border); min-height: 64px; box-shadow: none; padding: 10px 32px 10px 64px; margin-bottom: 0; }
 .topbar-title, .page-body > .main-header h1 { font-size: 20px; font-weight: 700; letter-spacing: -.5px; color: var(--accent-text); }
 .account-button { background: transparent; color: var(--text-muted); border: 1px solid var(--input-border); box-shadow: none; }
 .account-button:hover { background: var(--btn-muted-bg); color: var(--accent-text); }
 .account-dropdown { border-radius: 12px; box-shadow: 0 12px 35px rgba(12, 25, 48, .16); }
 .page-body .main { padding-top: 26px; }
-.section-kicker { display: none; }
-.section-heading { margin-bottom: 20px; }
-.section-heading h2 { margin-bottom: 6px; font-size: 34px; letter-spacing: -.8px; }
-.section-heading p { color: var(--text-muted); font-size: 14px; }
 .search-bar { margin-bottom: 14px; }
 .search-bar input { background: var(--input-bg); border-radius: 8px; box-shadow: none; }
 .search-bar button { border-radius: 8px; box-shadow: none; font-weight: 600; }
 .scrape-filter-row { gap: 6px; margin-bottom: 14px; }
 .scrape-filter-link { border-radius: 6px; background: transparent; border: 1px solid var(--border); font-size: 12px; }
 .scrape-filter-link.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.coverage-sort { margin-top: 12px; }
-.coverage-sort a { border-radius: 6px; }
-.coverage-sort a[aria-current] { background: var(--btn-muted-bg); }
-.coverage-explainer { max-width: 78ch; font-size: 12px; }
-.reading-options { color: var(--text-muted); font-size: 12px; margin-bottom: 20px; }
-.reading-options summary { cursor: pointer; padding-block: 6px; }
 .story { border-radius: 10px; border: 1px solid var(--border); box-shadow: none; margin-bottom: 18px; }
 .story:hover { transform: none; box-shadow: var(--shadow); border-color: var(--input-border); }
 .story-content { padding: 24px; }
@@ -53,7 +40,7 @@ body { -webkit-font-smoothing: antialiased; }
 .story-image { width: 220px; min-width: 220px; height: 180px; min-height: 180px; align-self: flex-start; margin: 16px 0 16px 16px; border-radius: 6px; }
 .story-image img, .story:hover .story-image img { transform: none; }
 .story .summary { background: transparent; border: 0; padding: 0; margin: 0 0 12px; font-size: 15px; line-height: 1.65; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
-.card-meta, .coverage-line { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+.card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
 .bias-balance { border: 0; background: transparent; justify-content: flex-start; gap: 18px; margin-bottom: 8px; }
 .bias-col { flex: 0 1 auto; display: flex; align-items: baseline; gap: 5px; padding: 0; }
 .bias-col + .bias-col { border: 0; }
@@ -65,13 +52,8 @@ body { -webkit-font-smoothing: antialiased; }
 .card-actions button.btn { color: var(--text-muted); font-weight: 400; }
 .card-actions .btn:hover { color: var(--accent-text); text-decoration: underline; transform: none; }
 .reader-detail { margin-top: 30px; }
-.reader-back a { color: var(--accent-text); font-weight: 500; }
 .reader-detail .story-card, .reader-detail .article-card { padding: 36px; border-radius: 12px; box-shadow: var(--shadow); }
 .reader-detail h1 { font-size: 38px; font-weight: 700; line-height: 1.15; letter-spacing: -.8px; margin-bottom: 24px; }
-.story-facts { font-size: 13px; gap: 10px 20px; margin-bottom: 18px; }
-.coverage-details { color: var(--text-muted); font-size: 12px; padding: 12px 0; border-block: 1px solid var(--border); margin-bottom: 24px; }
-.coverage-details p { line-height: 1.6; margin-top: 10px; max-width: 75ch; }
-.coverage-details summary, .story-tools summary { cursor: pointer; }
 .reader-detail .analysis-box { padding: 0; border: 0; border-radius: 0; background: transparent; margin-bottom: 28px; }
 .reader-detail .analysis-label { font-size: 18px; font-weight: 700; letter-spacing: -.2px; text-transform: none; margin-bottom: 12px; }
 .reader-detail .analysis-content { font-size: 16px; line-height: 1.7; max-width: 75ch; }
@@ -79,38 +61,30 @@ body { -webkit-font-smoothing: antialiased; }
 .reader-detail .article-item { border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 12px; }
 .reader-detail .article-meta { font-size: 12px; font-weight: 500; gap: 10px; margin-bottom: 12px; }
 .reader-detail .article-link { font-size: 21px; font-weight: 700; line-height: 1.3; letter-spacing: -.3px; }
-.source-excerpt { color: var(--text-muted); font-size: 15px; line-height: 1.65; margin: 14px 0; max-width: 78ch; }
-.excerpt-label { display: block; font-size: 12px; margin-bottom: 4px; }
 .scrape-note { font-size: 12px; color: var(--text-muted); margin: 12px 0; }
 .reader-detail .article-actions { gap: 8px 16px; margin-top: 12px; }
 .reader-detail .article-actions a.btn-view { background: var(--accent); color: #fff; border: 1px solid var(--accent); border-radius: 7px; padding: 9px 14px; font-size: 13px; font-weight: 600; box-shadow: none; }
 .reader-detail .article-actions a.btn-view:hover { background: var(--accent-dark); }
 .reader-detail .article-actions button.btn-view { border: 0; background: transparent; color: var(--accent-text); font-size: 13px; padding: 9px 4px; box-shadow: none; }
-.reader-detail .article-original { color: var(--accent-text); font-size: 13px; font-weight: 500; text-decoration: none; }
-.reader-detail .article-original:hover { text-decoration: underline; }
 .bias-tag { border-radius: 5px; font-size: 10px; letter-spacing: .2px; padding: 3px 6px; }
-.story-tools { font-size: 12px; color: var(--text-muted); margin: 12px 0 22px; }
-.story-tools button { margin-top: 8px; }
 @media (max-width: 768px), (max-height: 500px) {
-    body .sidebar-close { color: var(--sidebar-text); }
 }
 @media (max-width: 768px) {
-    .page-body > .topbar, .page-body > .main-header { padding: 10px 16px; }
-    .topbar-title, .page-body > .main-header h1 { font-size: 18px; }
-    .page-body .main { padding-top: 20px; }
-    .section-heading h2 { font-size: 28px; }
-    .story-image { width: 100%; min-width: 0; height: 160px; min-height: 160px; margin: 0; border-radius: 0; }
-    .story-content { padding: 20px; }
-    .story h2 { font-size: 23px; }
-    .reader-detail { margin-top: 20px; }
-    .reader-detail .story-card, .reader-detail .article-card { padding: 20px; }
-    .reader-detail h1 { font-size: 28px; letter-spacing: -.5px; }
-    .reader-detail .article-item { padding: 16px; }
-    .reader-detail .article-link { font-size: 20px; }
-    .reader-detail .analysis-content { font-size: 15px; line-height: 1.7; }
+.page-body > .topbar, .page-body > .main-header { padding: 10px 16px; }
+.topbar-title, .page-body > .main-header h1 { font-size: 18px; }
+.page-body .main { padding-top: 20px; }
+.story-image { width: 100%; min-width: 0; height: 160px; min-height: 160px; margin: 0; border-radius: 0; }
+.story-content { padding: 20px; }
+.story h2 { font-size: 23px; }
+.reader-detail { margin-top: 20px; }
+.reader-detail .story-card, .reader-detail .article-card { padding: 20px; }
+.reader-detail h1 { font-size: 28px; letter-spacing: -.5px; }
+.reader-detail .article-item { padding: 16px; }
+.reader-detail .article-link { font-size: 20px; }
+.reader-detail .analysis-content { font-size: 15px; line-height: 1.7; }
 }
 
 @media (min-width: 769px) and (max-width: 1050px) {
-    .reader-detail .story-card, .reader-detail .article-card { padding: 26px; }
-    .reader-detail h1 { font-size: 32px; }
+.reader-detail .story-card, .reader-detail .article-card { padding: 26px; }
+.reader-detail h1 { font-size: 32px; }
 }
