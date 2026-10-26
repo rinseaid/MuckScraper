@@ -123,3 +123,37 @@ def test_hostile_preferences_keyboard_and_load_failures(engine):
         assert not errors
         assert all(method == 'GET' and urlsplit(url).netloc == 'appearance.example' for method, url in requests)
         browser.close()
+
+
+def test_appearance_does_not_add_write_routes_or_bypass_csrf(monkeypatch):
+    from aggregator import create_app, db
+    from aggregator.models import User
+    monkeypatch.setenv('SECRET_KEY', 'appearance-test-fixture-only-secret')
+    monkeypatch.setenv('DATABASE_URL', 'sqlite://')
+    monkeypatch.setenv('READER_APPEARANCE_ENABLED', 'false')
+    ordinary = create_app()
+    original_routes = {(r.rule, tuple(sorted(r.methods))) for r in ordinary.url_map.iter_rules()}
+    monkeypatch.setenv('READER_APPEARANCE_ENABLED', 'true')
+    app = create_app()
+    assert {(r.rule, tuple(sorted(r.methods))) for r in app.url_map.iter_rules()} == original_routes
+    with app.app_context():
+        db.create_all()
+        user = User(username='fixture-reader', email='reader@example.test', role='reader', is_active=True)
+        user.set_password('synthetic fixture password')
+        db.session.add(user)
+        db.session.commit()
+        before = (user.id, user.email, user.password_hash, user.role)
+        client = app.test_client()
+        with client.session_transaction() as session:
+            session['_user_id'] = str(user.id)
+            session['_fresh'] = True
+        for payload in ['', '{}', 'null', '[]', '<script>alert(1)</script>', 'x' * 100000]:
+            for route in ['/auth/profile', '/auth/logout']:
+                for content_type in ['application/json', 'application/x-www-form-urlencoded', 'text/plain']:
+                    response = client.post(route, data=payload, content_type=content_type)
+                    assert response.status_code == 400
+        db.session.expire_all()
+        user = User.query.get(before[0])
+        assert (user.id, user.email, user.password_hash, user.role) == before
+        assert User.query.count() == 1
+        db.drop_all()
